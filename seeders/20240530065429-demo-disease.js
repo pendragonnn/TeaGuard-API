@@ -59,9 +59,15 @@ module.exports = {
         diseaseRecommendation: "Pangkas dan buang daun yang terinfeksi, hindari kelembapan berlebihan, dan aplikasikan fungisida yang sesuai untuk mengendalikan penyakit.",
         createdAt: new Date(),
         updatedAt: new Date(),
+      },
+      {
+        id: "D-008",
+        diseaseName: "Healthy",
+        diseaseExplanation: "Teh ini sehat dan bebas dari penyakit, menunjukkan pertumbuhan yang baik dan daun yang hijau cerah.",
+        diseaseRecommendation: "Untuk merawat daun yang sehat, pastikan tanaman mendapatkan cukup sinar matahari, air, dan nutrisi. Jaga kebersihan kebun dan lakukan pemangkasan secara teratur untuk mencegah infeksi penyakit.",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       }
-
-
     ])
   },
 
