@@ -1,0 +1,395 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "TeaGuard API Documentation",
+      "version": "1.0.0",
+      "description": "API Documentation for TeaGuard application"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:5000",
+        "description": "Local server"
+      }
+    ],
+    "paths": {
+      "/v1/disease": {
+        "get": {
+          "tags": ["Diseases"],
+          "summary": "Retrieve a list of diseases",
+          "responses": {
+            "200": {
+              "description": "A list of diseases",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Disease"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": ["Diseases"],
+          "summary": "Create a new disease",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Disease"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Disease created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Disease"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/disease/{id}": {
+        "get": {
+          "tags": ["Diseases"],
+          "summary": "Get a disease by ID",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "The disease ID"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Disease found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Disease"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Disease not found"
+            }
+          }
+        },
+        "put": {
+          "tags": ["Diseases"],
+          "summary": "Update a disease by ID",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "The disease ID"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Disease"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Disease updated",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Disease"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Disease not found"
+            }
+          }
+        },
+        "delete": {
+          "tags": ["Diseases"],
+          "summary": "Delete a disease by ID",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "The disease ID"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Disease deleted"
+            },
+            "404": {
+              "description": "Disease not found"
+            }
+          }
+        }
+      },
+      "/v1/disease_details": {
+        "get": {
+          "tags": ["DiseaseDetails"],
+          "summary": "Retrieve a list of disease details",
+          "responses": {
+            "200": {
+              "description": "A list of disease details",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/DiseaseDetail"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": ["DiseaseDetails"],
+          "summary": "Create a new disease detail",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "diseaseName": {
+                      "type": "string"
+                    },
+                    "diseaseImgPreview": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "diseaseImgDetail": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "diseaseExplanation": {
+                      "type": "string"
+                    },
+                    "diseasePrevention": {
+                      "type": "string"
+                    },
+                    "diseaseRecommendation": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Disease detail created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DiseaseDetail"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/disease_details/{id}": {
+        "get": {
+          "tags": ["DiseaseDetails"],
+          "summary": "Get a disease detail by ID",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "The disease detail ID"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Disease detail found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DiseaseDetail"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Disease detail not found"
+            }
+          }
+        },
+        "put": {
+          "tags": ["DiseaseDetails"],
+          "summary": "Update a disease detail by ID",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "The disease detail ID"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "diseaseName": {
+                      "type": "string"
+                    },
+                    "diseaseImgPreview": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "diseaseImgDetail": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "diseaseExplanation": {
+                      "type": "string"
+                    },
+                    "diseasePrevention": {
+                      "type": "string"
+                    },
+                    "diseaseRecommendation": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Disease detail updated",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DiseaseDetail"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Disease detail not found"
+            }
+          }
+        },
+        "delete": {
+          "tags": ["DiseaseDetails"],
+          "summary": "Delete a disease detail by ID",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "The disease detail ID"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Disease detail deleted"
+            },
+            "404": {
+              "description": "Disease detail not found"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Disease": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "diseaseName": {
+              "type": "string"
+            },
+            "diseaseExplanation": {
+              "type": "string"
+            },
+            "diseaseRecommendation": {
+              "type": "string"
+            }
+          }
+        },
+        "DiseaseDetail": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "diseaseName": {
+              "type": "string"
+            },
+            "diseaseImgPreview": {
+              "type": "string"
+            },
+            "diseaseImgDetail": {
+              "type": "string"
+            },
+            "diseaseExplanation": {
+              "type": "string"
+            },
+            "diseasePrevention": {
+              "type": "string"
+            },
+            "diseaseRecommendation": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+  
